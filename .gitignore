@@ -1,0 +1,14 @@
+# Windows Zone.Identifier alternate data streams (WSL artifact)
+*:Zone.Identifier
+
+# OS junk
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/

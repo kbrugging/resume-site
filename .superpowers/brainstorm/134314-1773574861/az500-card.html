@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AZ-500 Card Design</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f7; color: #1d1d1f; }
+
+  .label {
+    font-size: 12px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.1em; color: #6e6e73; text-align: center;
+    padding: 14px; background: #e8e8ed; border-bottom: 1px solid #d2d2d7;
+  }
+
+  .section { padding: 60px 24px 100px; }
+  .container { max-width: 860px; margin: 0 auto; }
+
+  .section-title {
+    font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+    color: #1d1d1f; margin-bottom: 12px; text-align: center;
+  }
+
+  .section-note {
+    text-align: center; font-size: 14px; color: #6e6e73; margin-bottom: 48px;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
+  }
+
+  /* Regular card */
+  .card {
+    background: #fff;
+    border: 1px solid #d2d2d7;
+    border-radius: 18px;
+    padding: 28px;
+    display: flex; flex-direction: column; gap: 12px;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    opacity: 0.45;
+  }
+
+  .card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+
+  /* In-progress card */
+  .card.in-progress {
+    opacity: 1;
+    border-color: rgba(0,113,227,0.35);
+    background: #fff;
+    position: relative;
+    box-shadow: 0 0 0 3px rgba(0,113,227,0.08);
+  }
+
+  .in-progress-badge {
+    position: absolute;
+    top: 16px; right: 16px;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: #0071e3;
+    background: rgba(0,113,227,0.1);
+    border: 1px solid rgba(0,113,227,0.25);
+    padding: 3px 9px; border-radius: 980px;
+  }
+
+  .cert-thumb-placeholder {
+    width: 56px; height: 56px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #0078d4, #0071e3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+    align-self: flex-start;
+  }
+
+  .card-title { font-size: 16px; font-weight: 600; color: #1d1d1f; line-height: 1.3; }
+  .card-desc { font-size: 14px; color: #6e6e73; line-height: 1.6; flex: 1; }
+
+  .card-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+  .tag {
+    font-size: 13px; font-weight: 500; color: #0071e3;
+    background: rgba(0,113,227,0.07); border: 1px solid rgba(0,113,227,0.18);
+    padding: 3px 10px; border-radius: 980px;
+  }
+
+  .progress-bar-wrap {
+    background: rgba(0,113,227,0.08);
+    border-radius: 980px;
+    height: 5px;
+    overflow: hidden;
+  }
+
+  .progress-bar {
+    height: 100%;
+    width: 15%;
+    background: linear-gradient(90deg, #0071e3, #38bdf8);
+    border-radius: 980px;
+    animation: pulse 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes pulse {
+    from { opacity: 0.7; }
+    to { opacity: 1; }
+  }
+
+  .progress-label {
+    font-size: 12px; color: #6e6e73;
+  }
+
+  /* faded cards to show context */
+  .card-thumb-fake {
+    width: 56px; height: 56px; border-radius: 10px;
+    background: #e8e8ed; flex-shrink: 0; align-self: flex-start;
+  }
+
+  .feedback-bar {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: rgba(255,255,255,0.95);
+    border-top: 1px solid #d2d2d7;
+    padding: 12px 24px;
+    display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+    backdrop-filter: blur(10px);
+  }
+  .feedback-bar button {
+    padding: 8px 18px; border-radius: 980px;
+    border: 1px solid rgba(0,113,227,0.4);
+    background: transparent; color: #0071e3;
+    font-size: 13px; font-weight: 500; cursor: pointer; font-family: inherit;
+  }
+  .feedback-bar button:hover { background: rgba(0,113,227,0.06); }
+</style>
+</head>
+<body>
+
+<div class="label">DESIGN PREVIEW - AZ-500 "In Progress" card in Certifications grid</div>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Certifications</h2>
+    <p class="section-note">The AZ-500 card is shown highlighted. Other cards are faded to focus attention.</p>
+
+    <div class="cards-grid">
+
+      <!-- AZ-500 IN PROGRESS - the new card -->
+      <div class="card in-progress">
+        <span class="in-progress-badge">In Progress</span>
+        <div class="cert-thumb-placeholder">🛡️</div>
+        <h3 class="card-title">Microsoft Azure Security Technologies</h3>
+        <p class="card-desc">
+          Associate-level certification covering Azure security posture, identity protection,
+          network security, data and application security, and security operations.
+        </p>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <div class="progress-bar-wrap">
+            <div class="progress-bar"></div>
+          </div>
+          <span class="progress-label">Currently studying - exam pending</span>
+        </div>
+        <div class="card-tags">
+          <span class="tag">AZ-500</span>
+          <span class="tag">2026</span>
+        </div>
+      </div>
+
+      <!-- AZ-104 - faded for context -->
+      <div class="card">
+        <div class="card-thumb-fake"></div>
+        <h3 class="card-title">Microsoft Azure Administrator Associate</h3>
+        <p class="card-desc">AZ-104 - Mar 2026</p>
+        <div class="card-tags"><span class="tag">AZ-104</span></div>
+      </div>
+
+      <!-- Security+ - faded for context -->
+      <div class="card">
+        <div class="card-thumb-fake"></div>
+        <h3 class="card-title">CompTIA Security+</h3>
+        <p class="card-desc">SY0-701 - Jun 2025</p>
+        <div class="card-tags"><span class="tag">Security+</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="feedback-bar">
+  <button>Looks good - approve</button>
+  <button>Remove the progress bar</button>
+  <button>Place it last, not first</button>
+  <button>Different style for in-progress</button>
+</div>
+
+</body>
+</html>

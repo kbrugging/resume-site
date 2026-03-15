@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Full Design Summary</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; color: #1d1d1f; line-height: 1.6; }
+
+  .label {
+    font-size: 12px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.1em; color: #6e6e73; text-align: center;
+    padding: 14px; background: #e8e8ed; border-bottom: 1px solid #d2d2d7;
+  }
+
+  .page { max-width: 720px; margin: 0 auto; padding: 48px 24px 120px; }
+
+  h2 { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; color: #1d1d1f; margin-bottom: 32px; }
+
+  .change-group { margin-bottom: 40px; }
+
+  .change-group h3 {
+    font-size: 13px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.08em; color: #6e6e73; margin-bottom: 16px;
+    padding-bottom: 8px; border-bottom: 1px solid #e5e5ea;
+  }
+
+  .change {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding: 12px 0; border-bottom: 1px solid #f0f0f5;
+  }
+
+  .change:last-child { border-bottom: none; }
+
+  .change-icon {
+    width: 28px; height: 28px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; flex-shrink: 0; margin-top: 1px;
+  }
+
+  .icon-new { background: rgba(52,199,89,0.12); }
+  .icon-edit { background: rgba(0,113,227,0.1); }
+  .icon-move { background: rgba(255,149,0,0.1); }
+
+  .change-body { flex: 1; }
+  .change-title { font-size: 15px; font-weight: 600; color: #1d1d1f; margin-bottom: 3px; }
+  .change-detail { font-size: 14px; color: #6e6e73; }
+
+  .before-after {
+    display: flex; gap: 12px; margin-top: 8px;
+  }
+  .before, .after {
+    flex: 1; padding: 8px 12px; border-radius: 8px; font-size: 13px; line-height: 1.5;
+  }
+  .before { background: rgba(255,59,48,0.06); border: 1px solid rgba(255,59,48,0.15); color: #6e6e73; }
+  .after { background: rgba(52,199,89,0.06); border: 1px solid rgba(52,199,89,0.2); color: #1d1d1f; }
+  .before-label, .after-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+  .before-label { color: #ff3b30; }
+  .after-label { color: #34c759; }
+
+  .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .tag {
+    font-size: 12px; font-weight: 500; color: #0071e3;
+    background: rgba(0,113,227,0.07); border: 1px solid rgba(0,113,227,0.18);
+    padding: 2px 9px; border-radius: 980px;
+  }
+
+  .feedback-bar {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: rgba(255,255,255,0.97);
+    border-top: 1px solid #d2d2d7;
+    padding: 14px 24px;
+    display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+    backdrop-filter: blur(10px);
+  }
+  .feedback-bar button {
+    padding: 9px 22px; border-radius: 980px;
+    border: 1px solid rgba(0,113,227,0.4);
+    background: transparent; color: #0071e3;
+    font-size: 13px; font-weight: 500; cursor: pointer; font-family: inherit;
+  }
+  .approve {
+    background: #0071e3 !important; color: #fff !important;
+    border-color: #0071e3 !important;
+  }
+</style>
+</head>
+<body>
+
+<div class="label">FULL DESIGN SUMMARY - meetkrijn.dev refresh</div>
+
+<div class="page">
+  <h2>What's changing</h2>
+
+  <!-- Visual -->
+  <div class="change-group">
+    <h3>Visual &amp; Nav</h3>
+
+    <div class="change">
+      <div class="change-icon icon-edit">🎨</div>
+      <div class="change-body">
+        <div class="change-title">Dark navy hero section</div>
+        <div class="change-detail">Hero background becomes a dark navy gradient. The rest of the site (Story, Experience, Skills, Homelab, Certifications) stays white/light grey as it is now.</div>
+      </div>
+    </div>
+
+    <div class="change">
+      <div class="change-icon icon-edit">🔲</div>
+      <div class="change-body">
+        <div class="change-title">Nav adapts to dark hero</div>
+        <div class="change-detail">Sticky nav gets a dark background (rgba of the hero color) so it looks intentional over the dark hero and clean as you scroll into white sections. Nav text and links turn light.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero content -->
+  <div class="change-group">
+    <h3>Hero Section</h3>
+
+    <div class="change">
+      <div class="change-icon icon-edit">✏️</div>
+      <div class="change-body">
+        <div class="change-title">Headline repositioned</div>
+        <div class="before-after">
+          <div class="before"><div class="before-label">Before</div>IT Administrator | Azure &amp; Cloud Infrastructure</div>
+          <div class="after"><div class="after-label">After</div>Azure Administrator | Transitioning to Cloud Security</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="change">
+      <div class="change-icon icon-edit">✏️</div>
+      <div class="change-body">
+        <div class="change-title">Hero bio updated</div>
+        <div class="change-detail">Rewritten to lead with AZ-104 + AZ-500 in progress, mention 175h training, and close with the cloud security goal - all in 2 sentences.</div>
+      </div>
+    </div>
+
+    <div class="change">
+      <div class="change-icon icon-new">➕</div>
+      <div class="change-body">
+        <div class="change-title">TryHackMe link added to hero</div>
+        <div class="change-detail">Alongside email and LinkedIn: <strong>tryhackme.com/p/T1MBER.W0LF</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Skills -->
+  <div class="change-group">
+    <h3>Skills Section</h3>
+
+    <div class="change">
+      <div class="change-icon icon-move">↕️</div>
+      <div class="change-body">
+        <div class="change-title">Security group moved to second position</div>
+        <div class="change-detail">Cloud &amp; Azure stays first. Security moves from 4th to 2nd - immediately visible without scrolling.</div>
+        <div class="before-after">
+          <div class="before"><div class="before-label">Before</div>Cloud &amp; Azure → Identity → Networking → Security → ...</div>
+          <div class="after"><div class="after-label">After</div>Cloud &amp; Azure → Security → Identity → Networking → ...</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="change">
+      <div class="change-icon icon-edit">✏️</div>
+      <div class="change-body">
+        <div class="change-title">AZ-500 added to "In Progress" skill group</div>
+        <div class="change-detail">Currently only shows Python and Terraform. AZ-500 added as the most prominent in-progress item.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- New section -->
+  <div class="change-group">
+    <h3>New Section - Homelab &amp; Training</h3>
+
+    <div class="change">
+      <div class="change-icon icon-new">➕</div>
+      <div class="change-body">
+        <div class="change-title">Self-Hosted Infrastructure card</div>
+        <div class="change-detail">Pi5 running this site in production. Bullets: Nginx, Cloudflare, SSH hardening (key-only, custom port, fail2ban), UFW firewall, rsync deployment.</div>
+        <div class="tag-row">
+          <span class="tag">Raspberry Pi 5</span><span class="tag">Nginx</span><span class="tag">Cloudflare</span><span class="tag">SSH Hardening</span><span class="tag">UFW</span><span class="tag">Linux</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="change">
+      <div class="change-icon icon-new">➕</div>
+      <div class="change-body">
+        <div class="change-title">TryHackMe Security Labs card</div>
+        <div class="change-detail">175h+ / 3 paths. Stats shown prominently. Breakdown: SOC L1 (87h), Security Engineer (64h), DevSecOps (26h). Links to tryhackme.com/p/T1MBER.W0LF</div>
+        <div class="tag-row">
+          <span class="tag">SOC</span><span class="tag">SIEM</span><span class="tag">Incident Response</span><span class="tag">Security Engineering</span><span class="tag">DevSecOps</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="change">
+      <div class="change-icon icon-edit">🔗</div>
+      <div class="change-body">
+        <div class="change-title">Nav updated</div>
+        <div class="change-detail">"Homelab" link added to nav between Skills and Certifications.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Certifications -->
+  <div class="change-group">
+    <h3>Certifications Section</h3>
+
+    <div class="change">
+      <div class="change-icon icon-new">➕</div>
+      <div class="change-body">
+        <div class="change-title">AZ-500 card added - first in grid</div>
+        <div class="change-detail">"In Progress" badge, blue glow border, animated progress bar, description of what the cert covers. Signals direction immediately to any recruiter who lands on this section.</div>
+        <div class="tag-row">
+          <span class="tag">AZ-500</span><span class="tag">In Progress</span><span class="tag">2026</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="feedback-bar">
+  <button class="approve">Approve - write the spec</button>
+  <button>Something needs changing</button>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Design - Krijn Brugging</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #1a1a2e; color: #fff; }
+
+  .label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #94a3b8;
+    text-align: center;
+    padding: 16px;
+    background: #0f0f1a;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  /* --- NAV --- */
+  .nav {
+    background: rgba(10, 15, 30, 0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 0 24px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-name { font-weight: 600; font-size: 15px; color: #f0f9ff; }
+  .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+  .nav-links a { font-size: 13px; color: rgba(240,249,255,0.6); text-decoration: none; }
+  .nav-cta {
+    font-size: 13px; font-weight: 500; color: #38bdf8 !important;
+    border: 1px solid rgba(56,189,248,0.4);
+    padding: 5px 14px; border-radius: 980px;
+  }
+  .lang { font-size: 12px; color: rgba(240,249,255,0.4); }
+  .lang-active { color: #f0f9ff; font-weight: 600; }
+
+  /* --- HERO --- */
+  .hero {
+    background: linear-gradient(160deg, #07101f 0%, #0d1b2a 50%, #0a1628 100%);
+    padding: 100px 24px 90px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 50% 0%, rgba(56,189,248,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 30% at 80% 80%, rgba(99,102,241,0.05) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-content { position: relative; max-width: 860px; margin: 0 auto; }
+
+  .hero-photo {
+    width: 110px; height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(56,189,248,0.4);
+    box-shadow: 0 0 0 4px rgba(56,189,248,0.08), 0 8px 32px rgba(0,0,0,0.4);
+    margin-bottom: 28px;
+    background: #1e3a5f;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+  }
+
+  .hero-eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #38bdf8;
+    margin-bottom: 14px;
+  }
+
+  .hero-name {
+    font-size: clamp(44px, 7vw, 72px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    color: #f0f9ff;
+    margin-bottom: 24px;
+  }
+
+  .hero-bio {
+    font-size: 18px;
+    color: rgba(240,249,255,0.65);
+    max-width: 540px;
+    margin: 0 auto 32px;
+    line-height: 1.6;
+  }
+
+  .hero-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 14px;
+    flex-wrap: wrap;
+  }
+  .hero-links a { color: #38bdf8; text-decoration: none; }
+  .hero-links a:hover { text-decoration: underline; }
+  .hero-sep { color: rgba(240,249,255,0.2); }
+  .hero-location { color: rgba(240,249,255,0.45); font-size: 14px; }
+
+  /* --- TRANSITION --- */
+  .transition-hint {
+    background: #f5f5f7;
+    border-top: 1px solid #e5e5ea;
+    padding: 48px 24px;
+    text-align: center;
+  }
+  .transition-hint h3 { font-size: 15px; color: #1d1d1f; font-weight: 600; }
+  .transition-hint p { font-size: 14px; color: #6e6e73; margin-top: 4px; }
+
+  /* feedback bar */
+  .feedback {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: rgba(10,15,30,0.95);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 12px 24px;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .feedback button {
+    padding: 8px 20px;
+    border-radius: 980px;
+    border: 1px solid rgba(56,189,248,0.4);
+    background: transparent;
+    color: #38bdf8;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s;
+  }
+  .feedback button:hover { background: rgba(56,189,248,0.1); }
+  .feedback button.selected { background: rgba(56,189,248,0.2); border-color: #38bdf8; }
+
+  .note {
+    font-size: 12px;
+    color: rgba(240,249,255,0.35);
+    text-align: center;
+    padding: 8px 24px 80px;
+    background: linear-gradient(160deg, #07101f 0%, #0d1b2a 100%);
+  }
+</style>
+</head>
+<body>
+
+<div class="label">DESIGN PREVIEW - Hero Section (Approach 2)</div>
+
+<!-- Nav -->
+<nav class="nav">
+  <span class="nav-name">Krijn Brugging</span>
+  <ul class="nav-links">
+    <li><a href="#">About</a></li>
+    <li><a href="#">Story</a></li>
+    <li><a href="#">Experience</a></li>
+    <li><a href="#">Skills</a></li>
+    <li><a href="#">Projects</a></li>
+    <li><a href="#">Certifications</a></li>
+    <li><a href="#" class="nav-cta">Download CV</a></li>
+    <li><span class="lang"><span class="lang-active">EN</span> / <a href="#" style="color:rgba(240,249,255,0.4);text-decoration:none;">NL</a></span></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-photo">K</div>
+    <p class="hero-eyebrow">Azure Administrator &nbsp;|&nbsp; Transitioning to Cloud Security</p>
+    <h1 class="hero-name">Krijn Brugging</h1>
+    <p class="hero-bio">
+      Azure administrator managing Entra ID, Intune, and Microsoft 365. AZ-104 certified, studying AZ-500.
+      175+ hours of hands-on security training. Building toward cloud security engineering.
+    </p>
+    <div class="hero-links">
+      <a href="#">krijnbrugging@proton.me</a>
+      <span class="hero-sep">·</span>
+      <a href="#">LinkedIn</a>
+      <span class="hero-sep">·</span>
+      <a href="#">TryHackMe</a>
+      <span class="hero-sep">·</span>
+      <span class="hero-location">Havelte, Netherlands</span>
+    </div>
+  </div>
+</section>
+
+<div class="note">The nav and the rest of the page (Story, Experience, Skills...) stay white, just like now. Only the hero is dark.</div>
+
+<!-- Transition preview -->
+<div class="transition-hint">
+  <h3>My Story</h3>
+  <p>White section begins here - same as the current site</p>
+</div>
+
+<div class="feedback">
+  <button onclick="this.classList.toggle('selected');recordFeedback('approve')">Looks good - approve this</button>
+  <button onclick="this.classList.toggle('selected');recordFeedback('bio-tweak')">Bio copy needs tweaking</button>
+  <button onclick="this.classList.toggle('selected');recordFeedback('photo-concern')">Worried about no real photo showing</button>
+  <button onclick="this.classList.toggle('selected');recordFeedback('too-dark')">Too dark / not right</button>
+</div>
+
+<script>
+function recordFeedback(val) {
+  // Visual only - tell me in terminal
+  console.log('feedback:', val);
+}
+</script>
+
+</body>
+</html>
