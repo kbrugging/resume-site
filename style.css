@@ -76,6 +76,8 @@ a:hover {
   font-weight: 600;
   font-size: 17px;
   color: #f0f9ff;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .nav-name:hover {
@@ -86,12 +88,12 @@ a:hover {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 18px;
   list-style: none;
 }
 
 .nav-links a {
-  font-size: 14px;
+  font-size: 13px;
   color: rgba(240, 249, 255, 0.6);
   transition: color 0.15s;
 }
@@ -102,13 +104,14 @@ a:hover {
 }
 
 .nav-links .nav-cta {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   color: #38bdf8;
   border: 1px solid rgba(56, 189, 248, 0.4);
   padding: 6px 14px;
   border-radius: 980px;
   transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
 }
 
 .nav-lang {
@@ -674,6 +677,14 @@ details[open] .story-history-toggle::before {
 
 .card-icon-thm {
   background: linear-gradient(135deg, #1a0a0a, #2d1515);
+  overflow: hidden;
+}
+
+.card-icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 6px;
 }
 
 .progress-section {
