@@ -23,7 +23,7 @@
       color: var(--text);
       line-height: 1.5;
       background: #fff;
-      padding: 28mm 22mm 24mm;
+      padding: 0 17mm 12mm;
       max-width: 210mm;
       margin: 0 auto;
       -webkit-print-color-adjust: exact;
@@ -31,31 +31,35 @@
     }
 
     /* Header */
-    .cv-header { margin-bottom: 22pt; }
-    .cv-name { font-size: 26pt; font-weight: 700; letter-spacing: -0.02em; color: var(--text); }
-    .cv-role { font-size: 11pt; color: var(--accent); font-weight: 500; margin-top: 3pt; margin-bottom: 8pt; }
+    .cv-header {
+      background: linear-gradient(135deg, #07101f 0%, #0d1b2a 100%);
+      padding: 16pt 17mm 14pt;
+      margin-bottom: 0;
+    }
+    .cv-name { font-size: 26pt; font-weight: 700; letter-spacing: -0.02em; color: #f0f9ff; }
+    .cv-role { font-size: 11pt; color: #38bdf8; font-weight: 500; margin-top: 3pt; margin-bottom: 8pt; }
     .cv-contact {
       display: flex; flex-wrap: wrap; gap: 4pt 14pt;
-      font-size: 9pt; color: var(--muted);
+      font-size: 9pt; color: rgba(240,249,255,0.55);
     }
-    .cv-contact a { color: var(--muted); text-decoration: none; }
+    .cv-contact a { color: rgba(240,249,255,0.55); text-decoration: none; }
 
     /* Divider */
-    hr { border: none; border-top: 1px solid var(--border); margin: 14pt 0; }
+    hr { border: none; border-top: 1px solid var(--border); margin: 8pt 0; }
 
     /* Section */
-    .section { margin-bottom: 18pt; }
+    .section { margin-bottom: 12pt; }
     .section-title {
       font-size: 7.5pt; font-weight: 700;
       text-transform: uppercase; letter-spacing: 0.1em;
-      color: var(--muted); margin-bottom: 10pt;
+      color: var(--muted); margin-bottom: 7pt;
     }
 
     /* Profile */
     .cv-profile { font-size: 9.5pt; color: var(--muted); line-height: 1.6; }
 
     /* Experience */
-    .job { margin-bottom: 12pt; }
+    .job { margin-bottom: 8pt; }
     .job:last-child { margin-bottom: 0; }
     .job-header { display: flex; justify-content: space-between; align-items: baseline; gap: 8pt; }
     .job-company { font-weight: 600; font-size: 10.5pt; }
@@ -76,10 +80,10 @@
     }
 
     /* Certifications */
-    .cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8pt; }
-    .cert { border: 1pt solid var(--border); border-radius: 7pt; padding: 9pt 11pt; }
+    .cert-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6pt; }
+    .cert { border: 1pt solid var(--border); border-radius: 7pt; padding: 7pt 9pt; }
     .cert-title { font-size: 9.5pt; font-weight: 600; margin-bottom: 3pt; }
-    .cert-desc { font-size: 8.5pt; color: var(--muted); line-height: 1.5; margin-bottom: 5pt; }
+    .cert-desc { font-size: 8.5pt; color: var(--muted); line-height: 1.5; margin-bottom: 4pt; }
     .cert-tags { display: flex; flex-wrap: wrap; gap: 3pt; }
     .cert-tags .tag { font-size: 7.5pt; padding: 1.5pt 7pt; }
 
@@ -87,11 +91,11 @@
     .homelab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8pt; }
     .homelab-card { border: 1pt solid var(--border); border-radius: 7pt; padding: 9pt 11pt; break-inside: avoid; }
     .homelab-title { font-size: 9.5pt; font-weight: 600; margin-bottom: 2pt; }
-    .homelab-subtitle { font-size: 8.5pt; color: var(--muted); margin-bottom: 6pt; }
-    .homelab-stats { display: flex; gap: 14pt; margin-bottom: 6pt; }
+    .homelab-subtitle { font-size: 8.5pt; color: var(--muted); margin-bottom: 4pt; }
+    .homelab-stats { display: flex; gap: 14pt; margin-bottom: 4pt; }
     .homelab-stat-value { font-size: 11pt; font-weight: 700; color: var(--accent); display: block; }
     .homelab-stat-label { font-size: 7.5pt; color: var(--muted); }
-    .homelab-bullets { padding-left: 12pt; margin-bottom: 6pt; }
+    .homelab-bullets { padding-left: 12pt; margin-bottom: 4pt; }
     .homelab-bullets li { font-size: 8.5pt; color: var(--muted); line-height: 1.5; margin-bottom: 2pt; }
     .homelab-tags { display: flex; flex-wrap: wrap; gap: 3pt; }
     .homelab-tags .tag { font-size: 7.5pt; padding: 1.5pt 7pt; }
@@ -104,7 +108,8 @@
     .section-page-break { page-break-before: always; margin-top: 10mm; padding-top: 20pt; }
 
     @media print {
-      body { padding: 18mm 18mm 16mm; }
+      body { padding: 0 15mm 10mm; }
+      .cv-header { padding: 14pt 15mm 12pt; }
       .cert { break-inside: avoid; }
       .job { break-inside: avoid; }
       .section { break-inside: avoid; }
