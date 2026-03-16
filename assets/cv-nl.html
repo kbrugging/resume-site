@@ -51,6 +51,9 @@
       color: var(--muted); margin-bottom: 10pt;
     }
 
+    /* Profile */
+    .cv-profile { font-size: 9.5pt; color: var(--muted); line-height: 1.6; }
+
     /* Experience */
     .job { margin-bottom: 12pt; }
     .job:last-child { margin-bottom: 0; }
@@ -79,12 +82,26 @@
     .cert-desc { font-size: 8.5pt; color: var(--muted); line-height: 1.5; margin-bottom: 5pt; }
     .cert-tags { display: flex; flex-wrap: wrap; gap: 3pt; }
     .cert-tags .tag { font-size: 7.5pt; padding: 1.5pt 7pt; }
-    
+
+    /* Homelab */
+    .homelab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8pt; }
+    .homelab-card { border: 1pt solid var(--border); border-radius: 7pt; padding: 9pt 11pt; break-inside: avoid; }
+    .homelab-title { font-size: 9.5pt; font-weight: 600; margin-bottom: 2pt; }
+    .homelab-subtitle { font-size: 8.5pt; color: var(--muted); margin-bottom: 6pt; }
+    .homelab-stats { display: flex; gap: 14pt; margin-bottom: 6pt; }
+    .homelab-stat-value { font-size: 11pt; font-weight: 700; color: var(--accent); display: block; }
+    .homelab-stat-label { font-size: 7.5pt; color: var(--muted); }
+    .homelab-bullets { padding-left: 12pt; margin-bottom: 6pt; }
+    .homelab-bullets li { font-size: 8.5pt; color: var(--muted); line-height: 1.5; margin-bottom: 2pt; }
+    .homelab-tags { display: flex; flex-wrap: wrap; gap: 3pt; }
+    .homelab-tags .tag { font-size: 7.5pt; padding: 1.5pt 7pt; }
 
     @page {
       size: A4;
       margin: 0;
     }
+
+    .section-page-break { page-break-before: always; margin-top: 10mm; padding-top: 20pt; }
 
     @media print {
       body { padding: 18mm 18mm 16mm; }
@@ -99,7 +116,7 @@
 
   <header class="cv-header">
     <div class="cv-name">Krijn Brugging</div>
-    <div class="cv-role">IT Administrator | Azure &amp; Cloud Infrastructuur</div>
+    <div class="cv-role">Azure Administrator | Op weg naar Cloud Security</div>
     <div class="cv-contact">
       <a href="mailto:krijnbrugging@proton.me">krijnbrugging@proton.me</a>
       <a href="https://www.linkedin.com/in/krijn-brugging-920168384">linkedin.com/in/krijn-brugging-920168384</a>
@@ -112,8 +129,8 @@
 
   <section class="section">
     <div class="section-title">Profiel</div>
-    <p style="font-size:9.5pt; color:var(--muted); line-height:1.6;">
-      IT Administrator met hands-on ervaring in Azure, Entra ID, Intune en Microsoft 365.
+    <p class="cv-profile">
+      Azure administrator met dagelijkse hands-on ervaring in Entra ID, Intune en Microsoft 365.
       AZ-104, AZ-900, Security+, Network+ en A+ gecertificeerd met 175+ uur praktijkgerichte
       security training via de TryHackMe-leerpaden Security Engineer, SOC Level 1 en DevSecOps.
       Gericht op doorgroei naar cloud security engineering.
@@ -181,6 +198,15 @@
         <span class="tag">Compute</span>
         <span class="tag">Azure Monitor</span>
       </div>
+      <span class="skill-label">Security</span>
+      <div class="skill-tags">
+        <span class="tag">Microsoft Defender</span>
+        <span class="tag">Dreigingsdetectie</span>
+        <span class="tag">Loganalyse</span>
+        <span class="tag">SOC-analyse</span>
+        <span class="tag">Incidentrespons</span>
+        <span class="tag">DevSecOps</span>
+      </div>
       <span class="skill-label">Identiteit &amp; Toegang</span>
       <div class="skill-tags">
         <span class="tag">Entra ID</span>
@@ -201,15 +227,6 @@
         <span class="tag">VLANs</span>
         <span class="tag">VPN</span>
         <span class="tag">SSL/TLS</span>
-      </div>
-      <span class="skill-label">Security</span>
-      <div class="skill-tags">
-        <span class="tag">Microsoft Defender</span>
-        <span class="tag">Dreigingsdetectie</span>
-        <span class="tag">Loganalyse</span>
-        <span class="tag">SOC-analyse</span>
-        <span class="tag">Incidentrespons</span>
-        <span class="tag">DevSecOps</span>
       </div>
       <span class="skill-label">Security Tooling</span>
       <div class="skill-tags">
@@ -246,7 +263,7 @@
   </section>
 
 
-  <section class="section" style="page-break-before:always; margin-top:10mm; padding-top:20pt">
+  <section class="section section-page-break">
     <div class="section-title">Certificaten</div>
     <div class="cert-grid">
 
@@ -354,6 +371,62 @@
           <span class="tag">Umbraco</span>
           <span class="tag">Nov 2025</span>
           <span class="tag">Geldig t/m Nov 2027</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr>
+
+  <section class="section">
+    <div class="section-title">Homelab &amp; Training</div>
+    <div class="homelab-grid">
+
+      <div class="homelab-card">
+        <div class="homelab-title">Zelf-gehoste Infrastructuur</div>
+        <div class="homelab-subtitle">Raspberry Pi 5 homelab - live productie</div>
+        <ul class="homelab-bullets">
+          <li>Hosts meetkrijn.dev op Raspberry Pi 5 via Nginx reverse proxy</li>
+          <li>Cloudflare proxy voor DDoS-bescherming, CDN en SSL-terminatie</li>
+          <li>SSH-hardening: alleen sleutelauthenticatie, aangepaste poort, fail2ban actief</li>
+          <li>UFW-firewall met minimaal aanvalsoppervlak</li>
+          <li>rsync-gebaseerde deployment pipeline van lokale ontwikkeling naar Pi</li>
+        </ul>
+        <div class="homelab-tags">
+          <span class="tag">Raspberry Pi 5</span>
+          <span class="tag">Nginx</span>
+          <span class="tag">Cloudflare</span>
+          <span class="tag">Linux</span>
+          <span class="tag">SSH Hardening</span>
+          <span class="tag">UFW</span>
+        </div>
+      </div>
+
+      <div class="homelab-card">
+        <div class="homelab-title">TryHackMe - Security Labs</div>
+        <div class="homelab-subtitle">Praktijkgerichte offensieve en defensieve training</div>
+        <div class="homelab-stats">
+          <div>
+            <span class="homelab-stat-value">175+</span>
+            <span class="homelab-stat-label">Uur voltooid</span>
+          </div>
+          <div>
+            <span class="homelab-stat-value">3</span>
+            <span class="homelab-stat-label">Leerpaden</span>
+          </div>
+        </div>
+        <ul class="homelab-bullets">
+          <li>SOC Level 1 - SIEM, loganalyse, dreigingsintelligentie, IR (87u)</li>
+          <li>Security Engineer - veilige infra, hardening, PKI (64u)</li>
+          <li>DevSecOps - CI/CD-beveiliging, containerhardening (26u)</li>
+        </ul>
+        <div class="homelab-tags">
+          <span class="tag">SOC</span>
+          <span class="tag">SIEM</span>
+          <span class="tag">Incidentrespons</span>
+          <span class="tag">Security Engineering</span>
+          <span class="tag">DevSecOps</span>
         </div>
       </div>
 
